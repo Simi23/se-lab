@@ -14,6 +14,8 @@ public class TorpedoStore {
 
   private int torpedoCount = 0;
 
+  // Random generator for simulated failure of firing.
+  // Instance initiated in constructor, then reused.
   private Random generator;
 
   public TorpedoStore(int numberOfTorpedos){
@@ -39,6 +41,7 @@ public class TorpedoStore {
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
+    // use the random generator stored in this instance
     double r = this.generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
